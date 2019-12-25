@@ -2,10 +2,7 @@ package org.launchcode.techjobs.console;
 
 import org.apache.commons.csv.CSVRecord;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -45,6 +42,9 @@ public class TechJobs {
                 } else {
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
+
+                    //Bonus Missions 1. Sorting list results
+                    Collections.sort(results);
 
                     System.out.println("\n*** All " + columnChoices.get(columnChoice) + " Values ***");
 
@@ -114,6 +114,17 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        //Bonus Missions 1. Sorting list results
+        String comparisonKey = "position type";
+        Collections.sort(someJobs, new Comparator<HashMap< String,String >>() {
+
+            @Override
+            public int compare(HashMap<String, String> lhs,
+                               HashMap<String, String> rhs) {
+                // Do your comparison logic here and return accordingly.
+                return lhs.get(comparisonKey).compareTo(rhs.get(comparisonKey));
+            }
+        });
 
         if (someJobs.isEmpty()){
             System.out.println("No matching jobs were found.");

@@ -52,7 +52,9 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        return allJobs;
+        //return allJobs;
+        //Bonus mission 2.Returning a copy of allJobs
+        return new ArrayList<>(allJobs);
     }
 
     /**
